@@ -8,6 +8,7 @@ Write-Host "Processing Webhook for Alert $($Request.Body.alertUID)"
 $HaloClientID = $env:HaloClientID
 $HaloClientSecret = $env:HaloClientSecret
 $HaloURL = $env:HaloURL
+$Halotenantid = $env:HaloTenantID
 
 $HaloTicketStatusID = $env:HaloTicketStatusID
 $HaloCustomAlertTypeField = $env:HaloCustomAlertTypeField
@@ -67,7 +68,7 @@ $Email = Get-AlertEmailBody -AlertWebhook $AlertWebhook
 if ($Email) {
     $Alert = $Email.Alert
 
-    Connect-HaloAPI -URL $HaloURL -ClientId $HaloClientID -ClientSecret $HaloClientSecret -Scopes "all"
+    Connect-HaloAPI -URL $HaloURL -ClientId $HaloClientID -Tenant $Halotenantid -ClientSecret $HaloClientSecret -Scopes "all"
     
     $HaloDeviceReport = @{
         name                    = "Datto RMM Improved Alerts PowerShell Function - Device Report"
