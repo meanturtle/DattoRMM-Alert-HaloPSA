@@ -7,7 +7,7 @@ Write-Host "Processing Webhook for Alert $($Request.Body.alertUID)"
 
 Write-Host "Does this work $($Request.Body.alertUID)"
 
-$json1 = Convertfrom-json $Request.Body -Verbose
+$json1 = Convertfrom-json $($Request.Body) -Verbose
 
 Write-Host $json1
 
