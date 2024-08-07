@@ -35,24 +35,24 @@ $PriorityHaloMap = @{
     "Information" = "4"
 }
 
-Write-Host $($Request.Body.alertUID)
-Write-Host $($Request.Body.troubleshootingNote)
-Write-Host $($Request.Body.docURL)
-Write-Host $($Request.Body.showDeviceDetails)
-Write-Host $($Request.Body.showDeviceStatus)
-Write-Host $($Request.Body.showAlertDetails)
-Write-Host $($Request.Body.alertMessage)
-Write-Host $($Request.Body.platform)
+$alert =  $($Request.Body.alertUID)
+$trouble =  $($Request.Body.troubleshootingNote)
+$doc =  $($Request.Body.docURL)
+$showdevice =  $($Request.Body.showDeviceDetails)
+$showstatus =  $($Request.Body.showDeviceStatus)
+$showalert =  $($Request.Body.showAlertDetails)
+$showmessage =  $($Request.Body.alertMessage)
+$plat = t $($Request.Body.platform)
 
 $jsontrick = @{
-    troubleshootingNote = $($Request.Body.troubleshootingNote)
-    docURL = $($Request.Body.docURL)
-    showDeviceDetails=$($Request.Body.showDeviceDetails)
-    showDeviceStatus=$($Request.Body.showDeviceStatus)
-    showAlertDetails=$($Request.Body.showAlertDetails)
-    alertUID=$($Request.Body.alertUID)
-    alertMessage=$($Request.Body.alertMessage)
-    platform=$($Request.Body.platform)
+    troubleshootingNote = $trouble
+    docURL = $doc
+    showDeviceDetails= $showdevice
+    showDeviceStatus= $showstatus
+    showAlertDetails= $showalert
+    alertUID=$alert 
+    alertMessage= $showmessage
+    platform= $plat
 }
 
 $jsontrick = Convertto-json $jsontrick
