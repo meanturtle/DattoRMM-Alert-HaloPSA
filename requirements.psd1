@@ -2,6 +2,6 @@
 # See https://aka.ms/functionsmanageddependency for additional information.
 #
 @{
-    'DattoRMM' = '1.0.0.28'
-    'HaloAPI' = '1.9.0'
+    'DattoRMM' = '1.0.0.31'
+    'HaloAPI' = '1.22.1'
 }
