@@ -35,14 +35,14 @@ $PriorityHaloMap = @{
     "Information" = "4"
 }
 
-$alert =  $($Request.Body.alertUID)
-$trouble =  $($Request.Body.troubleshootingNote)
-$doc =  $($Request.Body.docURL)
-$showdevice =  $($Request.Body.showDeviceDetails)
-$showstatus =  $($Request.Body.showDeviceStatus)
-$showalert =  $($Request.Body.showAlertDetails)
-$showmessage =  $($Request.Body.alertMessage)
-$plat = $($Request.Body.platform)
+$alert =  $Request.Body.alertUID
+$trouble =  $Request.Body.troubleshootingNote
+$doc =  $Request.Body.docURL
+$showdevice =  $Request.Body.showDeviceDetails
+$showstatus =  $Request.Body.showDeviceStatus
+$showalert =  $Request.Body.showAlertDetails
+$showmessage =  $Request.Body.alertMessage
+$plat = $Request.Body.platform
 
 $jsontrick = @{
     troubleshootingNote = $trouble
