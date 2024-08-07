@@ -5,7 +5,7 @@ param($Request, $TriggerMetadata)
 
 Write-Host "Processing Webhook for Alert $($Request.Body.alertUID)"
 
-Write-Host $($Request.Body)
+Write-Host "Does this work $($Request.Body)"
 
 $HaloClientID = $env:HaloClientID
 $HaloClientSecret = $env:HaloClientSecret
