@@ -47,7 +47,19 @@ Write-Host $($Request.Body.showAlertDetails)
 Write-Host $($Request.Body.alertMessage)
 Write-Host $($Request.Body.platform)
 
-#$AlertWebhook = $Request.Body | convertfrom-json
+$jsontrick = @{
+    troubleshootingNote = $($Request.Body.troubleshootingNote)
+    docURL = $($Request.Body.docURL)
+    showDeviceDetails=$($Request.Body.showDeviceDetails)
+    showDeviceStatus=$($Request.Body.showDeviceStatus)
+    showAlertDetails=$($Request.Body.showAlertDetails)
+    alertUID=$($Request.Body.alertUID)
+    alertMessage=$($Request.Body.alertMessage)
+    platform=$($Request.Body.platform)
+}
+
+
+$AlertWebhook = $jsontrick | convertfrom-json
 
 
 $Email = Get-AlertEmailBody -AlertWebhook $AlertWebhook
