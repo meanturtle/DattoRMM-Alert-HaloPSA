@@ -58,6 +58,8 @@ $jsontrick = @{
     platform=$($Request.Body.platform)
 }
 
+$jsontrick = Convertto-json $jsontrick
+
 
 $AlertWebhook = $jsontrick | convertfrom-json
 
