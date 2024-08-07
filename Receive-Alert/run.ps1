@@ -44,11 +44,6 @@ $showalert =  $Request.Body.showAlertDetails
 $showmessage =  $Request.Body.alertMessage
 $plat = $Request.Body.platform
 
-$alert
-$trouble
-$doc
-$showdevice
-
 
 $jsontrick = @{
     troubleshootingNote = $trouble
