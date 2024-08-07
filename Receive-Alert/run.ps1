@@ -7,9 +7,6 @@ Write-Host "Processing Webhook for Alert $($Request.Body.alertUID)"
 
 Write-Host "Does this work $($Request.Body.alertUID)"
 
-$json1 = Convertfrom-json $($Request.Body) -Verbose
-
-Write-Host $json1
 
 $HaloClientID = $env:HaloClientID
 $HaloClientSecret = $env:HaloClientSecret
@@ -41,7 +38,16 @@ $PriorityHaloMap = @{
     "Information" = "4"
 }
 
-$AlertWebhook = $Request.Body | convertfrom-json
+Write-Host $($Request.Body.alertUID)
+Write-Host $($Request.Body.troubleshootingNote)
+Write-Host $($Request.Body.docURL)
+Write-Host $($Request.Body.showDeviceDetails)
+Write-Host $($Request.Body.showDeviceStatus)
+Write-Host $($Request.Body.showAlertDetails)
+Write-Host $($Request.Body.alertMessage)
+Write-Host $($Request.Body.platform)
+
+#$AlertWebhook = $Request.Body | convertfrom-json
 
 
 $Email = Get-AlertEmailBody -AlertWebhook $AlertWebhook
