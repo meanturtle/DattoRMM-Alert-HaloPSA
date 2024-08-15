@@ -16,6 +16,7 @@ $HaloTicketType = $env:HaloTicketType
 $HaloReocurringStatus = $env:HaloReocurringStatus
 $HaloResolvedStatus = $env:HaloClosedStatus
 $DattoAlertCF = $env:DattoAlertCustomField
+$alertdattoid = $Request.Body.alertUID
 
 # Set if the ticket will be marked as responded in Halo
 $SetTicketResponded = $false
@@ -47,6 +48,7 @@ $showalert =  $Request.Body.showAlertDetails
 $showmessage =  $Request.Body.alertMessage
 $plat = $Request.Body.platform
 $resolved = $Request.Body.resolved
+
 
 
 $jsontrick = @{
@@ -115,7 +117,7 @@ if ($Email) {
 
     $ReportResults = (Set-HaloReport -Report $AlertReportFilter).report.rows
     
-    $SameAlert = $ReportResults | where-object { $_.CFDattoAlertUid -eq $alert}
+    $SameAlert = $ReportResults | where-object { $_.CFDattoAlertUid -eq $alertdattoid}
     
     $ReoccuringHistory = $ReportResults | where-object { $_.CFDattoAlertType -eq $ParsedAlertType } 
     
@@ -147,7 +149,7 @@ if ($Email) {
             },
             @{
                 id    = $DattoAlertCF
-                value = $alert
+                value = $alertdattoid
             }
         )
     }
