@@ -198,7 +198,7 @@ if ($Email) {
     if ($resolved -eq "true" ) {
     if($SameAlert){
         $ActionResolveUpdate = @{
-            id = $SameAlert.CFDattoAlertUid
+            id = $SameAlert.Faultid
             status_id = $HaloResolvedStatus
         }
         $Null = Set-HaloTicket -Ticket $ActionResolveUpdate
