@@ -114,7 +114,9 @@ if ($Email) {
     }
 
     $ReportResults = (Set-HaloReport -Report $AlertReportFilter).report.rows
-
+    
+    $SameAlert = $ReportResults | where-object { $_.CFDattoAlertUid -eq $alert}
+    
     $ReoccuringHistory = $ReportResults | where-object { $_.CFDattoAlertType -eq $ParsedAlertType } 
     
     $ReoccuringAlerts = $ReoccuringHistory | where-object { $_.dateoccured -gt ((Get-Date).addhours(-$ReoccurringTicketHours)) }
@@ -192,12 +194,15 @@ if ($Email) {
 
     # Handle Resolved alerts
     if ($resolved -eq "true" ) {
+    if($SameAlert){
         $ActionResolveUpdate = @{
-            id = $Ticket.id
+            id = $SameAlert.CFDattoAlertUid
             status_id = $HaloResolvedStatus
         }
         $Null = Set-HaloTicket -Ticket $ActionResolveUpdate
-
+}else{
+Write-Host "Ticket not found"
+}
     }else{
     
     $Ticket = New-HaloTicket -Ticket $HaloTicketCreate
