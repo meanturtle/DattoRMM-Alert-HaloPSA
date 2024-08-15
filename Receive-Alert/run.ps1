@@ -115,7 +115,7 @@ if ($Email) {
 
     $ReportResults = (Set-HaloReport -Report $AlertReportFilter).report.rows
     
-    #$SameAlert = $ReportResults | where-object { $_.CFDattoAlertUid -eq $alert}
+    $SameAlert = $ReportResults | where-object { $_.CFDattoAlertUid -eq $alert}
     
     $ReoccuringHistory = $ReportResults | where-object { $_.CFDattoAlertType -eq $ParsedAlertType } 
     
