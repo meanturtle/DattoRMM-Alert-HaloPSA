@@ -16,7 +16,7 @@ $HaloTicketType = $env:HaloTicketType
 $HaloReocurringStatus = $env:HaloReocurringStatus
 
 # Set if the ticket will be marked as responded in Halo
-$SetTicketResponded = $True
+$SetTicketResponded = $false
 
 # Relates the tickets in Halo if the alerts arrive within x minutes for a device.
 $RelatedAlertMinutes = 5
