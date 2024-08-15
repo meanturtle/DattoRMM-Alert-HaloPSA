@@ -103,9 +103,9 @@ if ($Email) {
         id                       = $HaloAlertsReport.id
         filters                  = @(
             @{
-                fieldname      = 'inventorynumber'
+                fieldname      = 'CFDattoAlertUid'
                 stringruletype = 2
-                stringruletext = "$($HaloDevice.did)"
+                stringruletext = "$($alertdattoid)"
             }
         )
         _loadreportonly          = $true
