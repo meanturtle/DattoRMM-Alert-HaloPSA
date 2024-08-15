@@ -105,7 +105,7 @@ if ($Email) {
             @{
                 fieldname      = 'CFDattoAlertUid'
                 stringruletype = 2
-                stringruletext = "$($alertdattoid)"
+                stringruletext = "$alertdattoid"
             }
         )
         _loadreportonly          = $true
