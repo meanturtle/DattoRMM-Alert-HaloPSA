@@ -182,16 +182,20 @@ function Get-DRMMDeviceStatusSection {
         $RAMUDF
     )
 
+    
     # Generate CPU/ RAM Use Data
-    $CPUData = $Device.udf."udf$CPUUDF" | convertfrom-json
-    $RAMData = $Device.udf."udf$RAMUDF" | convertfrom-json
+    $CPUData = $Device.udf."udf$CPUUDF" | convertfrom-json -ErrorAction SilentlyContinue
+    $RAMData = $Device.udf."udf$RAMUDF" | convertfrom-json -ErrorAction SilentlyContinue
 
+if($CPUData){
     $CPUUse = $CPUData.T
     $RAMUse = $RAMData.T
-
     $CPUTable = Get-DecodedTable -TableString $CPUData.D -UseValue '%' | convertto-html -Fragment
     $RAMTable = Get-DecodedTable -TableString $RAMData.D -UseValue 'GBs' | convertto-html -Fragment
-
+}else{
+    $CPUTable = "Not Available for this alert"
+    $RAMTable = "Not Available for this alert"
+}
     $DiskData = $DeviceAudit.logicalDisks | where-object { $_.freespace }
 
     # Build the HTML for Disk Usage
