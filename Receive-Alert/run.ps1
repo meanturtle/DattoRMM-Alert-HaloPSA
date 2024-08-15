@@ -145,7 +145,7 @@ if ($Email) {
                 id    = $HaloCustomAlertTypeField
                 value = $ParsedAlertType
             },
-            {
+            @{
                 id    = $DattoAlertCF
                 value = $alert
             }
