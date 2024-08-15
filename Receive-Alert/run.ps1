@@ -88,7 +88,7 @@ if ($Email) {
 
     $HaloAlertsReportBase = @{
         name                    = "Datto RMM Improved Alerts PowerShell Function - Alerts Report"
-        sql                     = "SELECT Faultid, Symptom, tstatusdesc, dateoccured, inventorynumber, FGFIAlertType, CFDattoAlertType, fxrefto as ParentID, fcreatedfromid as RelatedID FROM FAULTS inner join TSTATUS on Status = Tstatus Where CFDattoAlertType is not null and fdeleted <> 1"
+        sql                     = "SELECT Faultid, Symptom, tstatusdesc, dateoccured, inventorynumber, FGFIAlertType, CFDattoAlertType, CFDattoAlertUid, fxrefto as ParentID, fcreatedfromid as RelatedID FROM FAULTS inner join TSTATUS on Status = Tstatus Where CFDattoAlertType is not null and fdeleted <> 1"
         description             = "This report is used to quickly obtain alert information for use with the improved Datto RMM Alerts Function"
         type                    = 0
         datasource_id           = 0
