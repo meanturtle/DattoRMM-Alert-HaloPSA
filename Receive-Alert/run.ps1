@@ -44,6 +44,7 @@ $showstatus =  $Request.Body.showDeviceStatus
 $showalert =  $Request.Body.showAlertDetails
 $showmessage =  $Request.Body.alertMessage
 $plat = $Request.Body.platform
+$resolved = $Request.Body.resolved
 
 
 $jsontrick = @{
@@ -143,6 +144,13 @@ if ($Email) {
         )
     }
 
+    
+
+    
+
+    
+
+
 
     # Handle reoccurring alerts
     if ($ReoccuringAlerts) {        
@@ -176,8 +184,16 @@ if ($Email) {
 
     } 
 
+    # Handle Resolved alerts
+    if ($resolved -eq "true" ) {
+        $ActionResolveUpdate = @{
+            id = $Ticket.id
+            status_id = 9
+        }
+        $Null = Set-HaloTicket -Ticket $ActionResolveUpdate
 
-     
+    }else{
+    
     $Ticket = New-HaloTicket -Ticket $HaloTicketCreate
 
     $ActionUpdate = @{
@@ -189,6 +205,7 @@ if ($Email) {
 
     $Null = Set-HaloAction -Action $ActionUpdate
 
+}
     if ($SetTicketResponded -eq $true) {
         $ActionResolveUpdate = @{
             ticket_id         = $Ticket.id
