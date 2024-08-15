@@ -56,7 +56,9 @@ This is the ID for the custom field you created in Halo.
 This is the ID of the ticket type you would like tickets created as in Halo. You can get this from /config/tickets/tickettype by clicking on the type and looking in the URL
 
 #### HaloReocurringStatus
-This is the status you would like to set tickets to if they reoccur.
+This is the status you would like to set tickets to if they reoccur. - Broken - Sets Ticket to in progress and assigns the api user
+
+### HaloClosed
 
 ## Installation
 To Deploy you can click the below button and then configure the settings as detailed above.
