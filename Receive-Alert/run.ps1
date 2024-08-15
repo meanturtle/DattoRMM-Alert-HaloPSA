@@ -14,6 +14,7 @@ $HaloTicketStatusID = $env:HaloTicketStatusID
 $HaloCustomAlertTypeField = $env:HaloCustomAlertTypeField
 $HaloTicketType = $env:HaloTicketType
 $HaloReocurringStatus = $env:HaloReocurringStatus
+$HaloResolvedStatus = $env:HaloClosedStatus
 
 # Set if the ticket will be marked as responded in Halo
 $SetTicketResponded = $false
@@ -188,7 +189,7 @@ if ($Email) {
     if ($resolved -eq "true" ) {
         $ActionResolveUpdate = @{
             id = $Ticket.id
-            status_id = 9
+            status_id = $HaloResolvedStatus
         }
         $Null = Set-HaloTicket -Ticket $ActionResolveUpdate
 
