@@ -15,6 +15,7 @@ $HaloCustomAlertTypeField = $env:HaloCustomAlertTypeField
 $HaloTicketType = $env:HaloTicketType
 $HaloReocurringStatus = $env:HaloReocurringStatus
 $HaloResolvedStatus = $env:HaloClosedStatus
+$DattoAlertCF = $env:DattoAlertCustomField
 
 # Set if the ticket will be marked as responded in Halo
 $SetTicketResponded = $false
@@ -141,6 +142,10 @@ if ($Email) {
             @{
                 id    = $HaloCustomAlertTypeField
                 value = $ParsedAlertType
+            },
+            {
+                id    = $DattoAlertCF
+                value = $alert
             }
         )
     }
