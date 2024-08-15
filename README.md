@@ -43,6 +43,9 @@ Create a Client ID and Secret API application in Halo. Assign the releveant perm
 #### HaloClientSecret
 This is the Client Secret for the application you created in Halo.
 
+### HaloTenantID
+This is the tenant id for Halo API 
+
 #### HaloURL
 This is the URL for your Halo instance.
 
@@ -58,7 +61,8 @@ This is the ID of the ticket type you would like tickets created as in Halo. You
 #### HaloReocurringStatus
 This is the status you would like to set tickets to if they reoccur. - Broken - Sets Ticket to in progress and assigns the api user
 
-### HaloClosed
+### HaloClosedStatus
+This is the status to set the ticket to resolved if it finds a ticket. 
 
 ## Installation
 To Deploy you can click the below button and then configure the settings as detailed above.
@@ -76,17 +80,37 @@ At the top click on Get Function Url. This is the URL you will need to enter in 
 
 Find the monitor you wish to edit in Datto RMM and set the URL as well as setting the body as below:
 ```
-{
+
+{   
     "troubleshootingNote": "Please turn the computer off an on again to fix the issue",
-    "docURL": "https://docs.yourdomain.com/alert-specific-kb-article",
-    "showDeviceDetails": true,
-    "showDeviceStatus": true,
-    "showAlertDetails": true,
-    "alertUID": "[alert_uid]",
-    "alertMessage": "[alert_message]",
-    "platform": "[platform]"
+    "docURL": "(https://docs.yourdomain.com/alert-specific-kb-article)",
+    "showDeviceDetails":true,
+    "showDeviceStatus":true,
+    "showAlertDetails":true,
+    "alertUID":"[alertuid]",
+    "alertMessage":"[alert_message]",
+    "platform":"[platform]",
+    "resolved":"false"
 }
+
 ```
+If you are using global webhooks set the resolved webhook with resolved tag to "true"
+```
+
+{   
+    "troubleshootingNote": "Please turn the computer off an on again to fix the issue",
+    "docURL": "(https://docs.yourdomain.com/alert-specific-kb-article)",
+    "showDeviceDetails":true,
+    "showDeviceStatus":true,
+    "showAlertDetails":true,
+    "alertUID":"[alertuid]",
+    "alertMessage":"[alert_message]",
+    "platform":"[platform]",
+    "resolved":"true"
+}
+
+```
+
 
 Save the montitor and then test it is working correctly before rolling it out for all your other monitors.
 
